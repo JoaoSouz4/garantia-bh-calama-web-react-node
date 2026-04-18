@@ -35,13 +35,12 @@ export function Form(){
                     <div className = 'flex justify-between gap-5 items-start'>
                         <div className = 'w-[60%]'>
                             <Services />
-                        </div>
-                        
-                        <div className = 'grow'>
                             <Payment />
                         </div>
+                        <div className = 'grow'>
+                            <Signature />
+                        </div>
                     </div>
-                    <Signature />
                     <Modal />
                 </div>
 

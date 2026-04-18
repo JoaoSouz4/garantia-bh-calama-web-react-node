@@ -7,16 +7,11 @@ export async function genPdf(osData) {
     body: JSON.stringify(osData),
   });
 
-  let data;
-
-  try {
-    data = await response.json();
-  } catch {
-    data = null; // caso não venha JSON válido
-  }
+  const data = await response.json();
+  console.log(data);
 
   if (!response.ok) {
-    throw new Error(data?.message || "Erro ao gerar PDF");
+    throw new Error(data?.message || "Erro ao gerar PDF" );
   }
 
   return data;

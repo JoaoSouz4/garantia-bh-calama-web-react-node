@@ -1,12 +1,11 @@
-import { useFormContext } from "react-hook-form";
 import { useSignature } from "../../../hooks/useSignature";
 
 export function Signature(){
 
-    const {status, signature} = useSignature();
+    const {signature} = useSignature();
   
     return (
-        <div className = 'flex flex-col mt-2 border border-blue-500 rounded-md overflow-hidden mt-6 h-[300px]'>
+        <div className = 'flex flex-col border border-blue-500 rounded-md overflow-hidden h-[300px]'>
             <div className = 'flex items-center justify-between p-2 bg-blue-600 text-white'>
                 <div className = 'font-bold'>Assinatura | Pré-visualização</div>
             </div>
@@ -18,10 +17,10 @@ export function Signature(){
                     <div className = 'border grow rounded-lg border-zinc-300'>
                         {
                         signature && 
-                            <div className = ''>
+                            <div className = 'flex justify-center items-center'>
                                 <img
-                                    className = 'h-[150px]'
-                                    src={`${signature}`}
+                                    className = 'h-[150px] w-[300px] flex justify-center items-center'
+                                    src={signature || ''}
                                     alt="Assinatura"
                                 />
                             </div>

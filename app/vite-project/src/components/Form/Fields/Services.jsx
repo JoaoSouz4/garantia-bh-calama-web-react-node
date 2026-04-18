@@ -25,7 +25,7 @@ export function Services() {
 };
 
   return (
-    <div className=" mt-2 border rounded-md overflow-hidden border-blue-500">
+    <div className="border rounded-md overflow-hidden border-blue-500">
       <div className = 'bg-blue-600 p-2 px-4 flex items-center justify-between'>
         <h2 className = 'text-white font-bold'>Lista de serviços</h2>
         <div className="flex items-center justify-end gap-2 overflow-hidden">
