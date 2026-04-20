@@ -1,10 +1,9 @@
 import { Input } from "../Input"
 import { List } from "./list"
 import { Option } from "./option"
-import { Separator } from "./separator"
 import { DropDownButton } from "./button"
 import { useEffect, useState } from "react"
-import { useFormContext, Controller, useFieldArray } from "react-hook-form"
+import { useFormContext, Controller} from "react-hook-form"
 
 export function DropDown({ label, options, indexx }) {
   const [isOpen, setIsOpen] = useState(false)

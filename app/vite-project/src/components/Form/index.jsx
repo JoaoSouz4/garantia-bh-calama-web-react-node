@@ -26,7 +26,7 @@ export function Form(){
                 className = ' flex flex-col flex-1 justify-between overflow-hidden'
                 onSubmit={handleSubmit(onSubmit)}
             >
-                <div className =  'flex-1 overflow-y-scroll bg-white p-6 shadow-md'>
+                <div className =  'flex-1 overflow-y-scroll bg-white p-10 px-12 shadow-md'>
 
                     <ClientSection />
                     <DeviceSection />

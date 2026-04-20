@@ -5,6 +5,11 @@ export const InputTextArea = forwardRef((props, ref) => {
         <textarea
             ref = {ref}
             className = 'w-full focus:outline-none text-sm text-blue-800'
+            onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                e.preventDefault();
+                }
+            }}
             {...props}
         />
     );
