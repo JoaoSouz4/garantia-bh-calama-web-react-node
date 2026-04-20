@@ -17,7 +17,7 @@ buttonSubmit.addEventListener("click", () => {
   try {
     const res = signaturePad.toDataURL();
     //mudar o ip aqui para o do pc da loja
-    fetch("http://192.168.1.8:5001/signature", {
+    fetch("http://192.168.1.218:5001/signature", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
