@@ -9,7 +9,7 @@ async function GenPdf(req, res){
             message: 'PDF gerado com sucesso'
         });
     } catch (error) {
-        console.log(error)
+
         return res.status(500).json({
             isSucess: false,
             message: error.message

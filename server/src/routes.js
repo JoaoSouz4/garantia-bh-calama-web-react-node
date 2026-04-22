@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const express = require("express");
 const path = require('path');
-const {getDate}  = require('./middleware/getDate.js');
+const {getDate, getOsData}  = require('./middleware/getDate.js');
 const {GenPdf} = require('./controller/genPdf.controller.js');
 const {sendToDesktop } = require('./websocket.js');
 const { setSignature } = require('./data/signatureStore.js');
@@ -16,7 +16,7 @@ routes.get('/app', (req, res) => {
   res.sendFile(path.join(reactPath, 'index.html'));
 });
 
-routes.post('/genpdf', getDate, GenPdf);
+routes.post('/genpdf', getOsData, GenPdf);
 
 routes.get("/signature", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "index.html"));
