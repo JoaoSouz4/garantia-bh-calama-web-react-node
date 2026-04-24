@@ -2,7 +2,7 @@ import { useEffect, useContext } from "react";
 import { SignatureContext } from "../context/SignatureContext";
 
 export function useSignature(){
-    const { signature, put} = useContext(SignatureContext);
+    const { signature, put } = useContext(SignatureContext);
 
     useEffect(() => {
         const ws = new WebSocket('ws://localhost:5001?type=desktop');
@@ -15,16 +15,14 @@ export function useSignature(){
             const data = JSON.parse(event.data);
 
             if(data.type === 'SIGNATURE_UPDATED'){
-                setTimeout(() => {
-                    put(data.payload)
-                }, 500)
+                put(data.payload)
             }
         };
 
         return () => {
             ws.close();
         };
-    }, []);
+    });
 
     return { signature };
 }

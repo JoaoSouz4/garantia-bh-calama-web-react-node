@@ -8,10 +8,9 @@ export async function genPdf(osData) {
   });
 
   const data = await response.json();
-  console.log(data);
 
-  if (!response.ok) {
-    throw new Error(data?.message || "Erro ao gerar PDF" );
+  if (!data.success) {
+    throw new Error(data?.errorMessage || "Erro ao gerar PDF" );
   }
 
   return data;

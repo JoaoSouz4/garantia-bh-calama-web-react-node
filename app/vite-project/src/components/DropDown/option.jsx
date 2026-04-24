@@ -1,8 +1,8 @@
 import { useFormContext } from "react-hook-form"
 
 export function Option({value, func, index}){
-    console.log(index, value, ' em option')
     const { setValue } = useFormContext();
+    
     function handleClick(){
         setValue(`payments[${index}].mode`, value)
         func()

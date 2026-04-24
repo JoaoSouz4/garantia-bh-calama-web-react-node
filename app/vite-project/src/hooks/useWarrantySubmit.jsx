@@ -24,8 +24,9 @@ export function useWarrantySubmit() {
       setIsOpen(true);
       reset();
       clear();
-    } catch (err) {
-      alert(err.message);
+    } catch (error) {
+      
+      alert(error.message);
     } finally {
       setIsLoading(false);
     }
