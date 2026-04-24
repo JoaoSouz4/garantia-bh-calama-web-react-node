@@ -12,76 +12,71 @@ const { drawClientDeport } = require('./helpers/drawClientReport');
 const { drawSignature } = require('./helpers/drawSignature');
 const { loadPdf } = require("./helpers/loadPdf");
 const { buildOutputPath } = require("./helpers/buildOutputPath");
+const { clearSignature, getSignature } = require('./data/signatureStore');
 
 async function generatePdf(orderService){
     
-    try {
-        const osData = orderService;
-        const dataFormatted = formatStringBR(osData.dateIssue);
-        const modelPath = path.join(__dirname, "./assets/model.pdf");
+const osData = orderService;
+  const dataFormatted = formatStringBR(osData.dateIssue);
+  const modelPath = path.join(__dirname, "./assets/model.pdf");
 
-        const { pdfDoc, page: firstPage } = await loadPdf(modelPath);
+  const { pdfDoc, page: firstPage } = await loadPdf(modelPath);
 
-        // ✅ REGISTRAz FONTKIT (ESSENCIAL)
-        pdfDoc.registerFontkit(fontkit);
+	pdfDoc.registerFontkit(fontkit);
 
-        // ✅ CARREGA ARIAL
-        const fontBytes = fs.readFileSync(
-            path.join(__dirname, './assets/fonts/arial.ttf')
-        );
-        const customFont = await pdfDoc.embedFont(fontBytes);
+	const fontBytes = fs.readFileSync(
+		path.join(__dirname, './assets/fonts/arial.ttf')
+	);
+	const customFont = await pdfDoc.embedFont(fontBytes);
 
-        const outputPath = buildOutputPath(orderService, dataFormatted);
+	const outputPath = buildOutputPath(orderService, dataFormatted);
 
-        drawText(firstPage, `${dataFormatted.dd} - ${dataFormatted.mm} - ${dataFormatted.year}`, pdfLayout.date, customFont);
-        drawText(firstPage, `${osData.deviceBrand} ${osData.device}`, pdfLayout.device, customFont);
-        drawText(firstPage, osData.name, pdfLayout.client.name, customFont);
-        drawText(firstPage, osData.techReport, pdfLayout.techReport, customFont);
-        drawText(firstPage, osData.totalValue, pdfLayout.totals.totalValue, customFont);
+	drawText(firstPage, `${dataFormatted.dd} - ${dataFormatted.mm} - ${dataFormatted.year}`, pdfLayout.date, customFont);
+	drawText(firstPage, `${osData.deviceBrand} ${osData.device}`, pdfLayout.device, customFont);
+	drawText(firstPage, osData.name, pdfLayout.client.name, customFont);
+	drawText(firstPage, osData.techReport, pdfLayout.techReport, customFont);
+	drawText(firstPage, osData.totalValue, pdfLayout.totals.totalValue, customFont);
 
-        drawServices(firstPage, osData.services, customFont, 1880, 45);
-        drawPayments(firstPage, osData.payments, customFont, 1880, 45);
+	drawServices(firstPage, osData.services, customFont, 1880, 45);
+	drawPayments(firstPage, osData.payments, customFont, 1880, 45);
 
-        if(osData.cpf) {
-            drawText(firstPage, osData.cpf, pdfLayout.client.cpf, customFont);
-        }
+	drawText(firstPage, osData.cpf, pdfLayout.client.cpf, customFont);
 
-        if(osData.imei) {
-            drawText(firstPage, osData.imei, pdfLayout.client.imei, customFont);
-        }
+	drawText(firstPage, osData.imei, pdfLayout.client.imei, customFont);
 
-        drawClientDeport({
-            page: firstPage,
-            text: osData.clientDeport,
-            font: customFont,
-            layout: pdfLayout.clientDeport,
-            fontSize: 45
-        });
+	if(osData.code){
+			const code = `${monthCode(dataFormatted.mm)}${osData.code}`;
+			firstPage.drawText(code, {
+					x: 1830,
+					y: 2980,
+					size: 35,
+					font: customFont
+			});
+	}
 
-        await drawSignature({
-            pdfDoc,
-            page: firstPage,
-            layout: pdfLayout.signature
-        });
+	drawClientDeport({
+			page: firstPage,
+			text: osData.clientDeport,
+			font: customFont,
+			layout: pdfLayout.clientDeport,
+			fontSize: 45
+	});
 
-        if(osData.code){
-            const code = `${monthCode(dataFormatted.mm)}${osData.code}`;
-            firstPage.drawText(code, {
-                x: 1830,
-                y: 2980,
-                size: 35,
-                font: customFont
-            });
-        }
+	const signatureResult = await drawSignature({
+		pdfDoc,
+		page: firstPage,
+		layout: pdfLayout.signature
+	});
 
-        const pdfBytes = await pdfDoc.save();
-        fs.writeFileSync(outputPath, pdfBytes);
+	const pdfBytes = await pdfDoc.save();
+	fs.writeFileSync(outputPath, pdfBytes);
+	
+	clearSignature();
 
-    }catch(error){
-        console.log(e.message); 
-        throw Error(e.message);
-    }
-
+	return {
+		outputPath: outputPath,
+		signatureResult
+	}
 }
 
 module.exports = { generatePdf };

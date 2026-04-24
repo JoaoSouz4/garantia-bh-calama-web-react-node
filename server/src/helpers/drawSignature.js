@@ -1,4 +1,4 @@
-const { getSignature, clearSignature } = require("../data/signatureStore");
+const { getSignature } = require("../data/signatureStore");
 
 async function drawSignature({
   pdfDoc,
@@ -6,7 +6,13 @@ async function drawSignature({
   layout
 }) {
   const signature = getSignature();
-  if (!signature) return;
+
+  if (!signature) {
+    return {
+      sucess: false,
+      message: 'no has signature save in memory'
+    }
+  }
 
   const base64Clean = signature.replace(
     /^data:image\/\w+;base64,/,
@@ -23,7 +29,10 @@ async function drawSignature({
     height: layout.height
   });
 
-  clearSignature();
+  return {
+    sucess: true,
+    message: 'signature draw with sucess'
+  }
 }
 
 module.exports = { drawSignature };

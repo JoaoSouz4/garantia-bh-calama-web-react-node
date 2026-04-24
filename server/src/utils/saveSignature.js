@@ -1,4 +1,4 @@
-const { getSignature, clearSignature } = require("../data/signatureStore");
+const { getSignature } = require("../data/signatureStore");
 
 async function saveSignature(pdfDoc, page) {
   const signature = getSignature();
@@ -15,8 +15,6 @@ async function saveSignature(pdfDoc, page) {
     width: 500,
     height: 200
   });
-
-  clearSignature();
 }
 
 module.exports = {saveSignature}

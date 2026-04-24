@@ -23,7 +23,6 @@ routes.get("/signature", (req, res) => {
 });
 
 routes.post("/signature", (req, res) => {
-    console.log('to aq')
     const { signature } = req.body;
 
     if (!signature) {
@@ -36,8 +35,6 @@ routes.post("/signature", (req, res) => {
         type: 'SIGNATURE_UPDATED',
         payload: signature
     });
-
-    console.log('dei o post')
 
     res.json({ ok: true });
 });
