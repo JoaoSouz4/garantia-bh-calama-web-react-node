@@ -12,12 +12,14 @@ buttonClear.addEventListener("click", () => {
   signaturePad.clear();
 });
 
-buttonSubmit.addEventListener("click", () => {
+const ip = '192.168.1.218' // calama;
+
+buttonSubmit.addEventListener("click", async () => {
 
   try {
     const res = signaturePad.toDataURL();
     //mudar o ip aqui para o do pc da loja
-    fetch("http://192.168.1.22:5001/signature", {
+    const result = await fetch(`http://${ip}:5001/signature`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -25,9 +27,11 @@ buttonSubmit.addEventListener("click", () => {
       body: JSON.stringify({
         signature: res
       })
-    }).then(() => {
-      alert("assinatura enviada");
     });
+
+    console.log(result)
+
+    alert('Assinatura enviada com sucesso')
 
     signaturePad.clear();
   }

@@ -22,7 +22,7 @@ export function useSignature(){
         return () => {
             ws.close();
         };
-    });
+    }, []);
 
     return { signature };
 }

@@ -25,7 +25,7 @@ function App() {
         <StatusProvider>
           <ModalProvider>
             <FormProvider {...methods}>
-              <div className = 'overflow-y-hidden bg-slate-100 w-[100dvw] h-[100dvh] flex justify-center items-center'>
+              <div className = 'bg-gray-800 w-[100dvw] h-[100dvh] flex justify-center items-center'>
                   <Layout />
               </div>
             </FormProvider>

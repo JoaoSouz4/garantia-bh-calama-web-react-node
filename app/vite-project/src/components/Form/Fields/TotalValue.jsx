@@ -26,7 +26,7 @@ export function TotalValue() {
   }, 0);
 
   return (
-    <label className="flex justify-end font-bold text-blue-800 text-xs p-2">
+    <label className="flex justify-end font-bold text-gray-400 text-xs p-2">
       Valor Total:{" "}
       {total.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}
     </label>

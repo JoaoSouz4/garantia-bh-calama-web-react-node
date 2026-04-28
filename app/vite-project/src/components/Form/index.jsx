@@ -26,25 +26,29 @@ export function Form(){
                 className = ' flex flex-col flex-1 justify-between overflow-hidden'
                 onSubmit={handleSubmit(onSubmit)}
             >
-                <div className =  'flex-1 overflow-y-scroll bg-white p-10 px-12 shadow-md'>
+                <div className =  'flex-1 overflow-y-scroll bg-gray-700 p-10 px-12 shadow-md'>
 
                     <ClientSection />
                     <DeviceSection />
                     <ReportsSection />
 
-                    <div className = 'flex justify-between gap-5 items-start'>
+                    <div className = 'flex justify-between gap-5'>
                         <div className = 'w-[60%]'>
                             <Services />
                             <Payment />
                         </div>
-                        <div className = 'grow'>
+                        <div className = 'flex-1 border-box'>
                             <Signature />
                         </div>
                     </div>
                     <Modal />
                 </div>
 
-                <Submit />
+                <div className="w-full flex justify-end">
+                    <div className ='w-[300px]'>
+                        <Submit />
+                    </div>
+                </div>
             </form>
         </div>
     );

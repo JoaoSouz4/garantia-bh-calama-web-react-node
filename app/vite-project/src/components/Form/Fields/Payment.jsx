@@ -22,9 +22,9 @@ export function Payment(){
         remove(fields.length - 1) // remove o último
     }
     return (
-        <div className = 'mt-2 border border-blue-500 rounded-md overflow-hidden'>
+        <div className = 'p-2 mt-2 border border-gray-500 rounded-md overflow-hidden'>
 
-            <div className = 'flex items-center justify-between p-2 bg-blue-600 text-white'>
+            <div className = 'flex items-center justify-between p-2 bg-gray-700 text-white'>
                 <div className = 'font-bold'>Informações de pagamento:</div>
 
                 <div className = 'flex gap-2 items-center'>

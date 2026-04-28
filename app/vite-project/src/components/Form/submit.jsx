@@ -10,7 +10,7 @@ export function Submit(){
     return (
         <button
             type = 'submit'
-            className = ' flex items-center justify-center hover:bg-blue-800 cursor-pointer bg-blue-600 font-bold text-blue-50 w-full rounded-lg shadow-md mt-2 h-[3rem]'>
+            className = ' flex items-center justify-center hover:bg-teal-700 cursor-pointer bg-teal-600 font-bold text-blue-50 w-full rounded-lg shadow-md mt-2 h-[3rem]'>
             {
                 !isLoading?
                     <div className = 'flex gap-2 items-center'> <FaFilePdf /> Gerar PDF</div>
