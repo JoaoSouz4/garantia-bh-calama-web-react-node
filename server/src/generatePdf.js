@@ -37,8 +37,8 @@ const osData = orderService;
 	drawText(firstPage, osData.techReport, pdfLayout.techReport, customFont);
 	drawText(firstPage, osData.totalValue, pdfLayout.totals.totalValue, customFont);
 
-	drawServices(firstPage, osData.services, customFont, 1880, 45);
-	drawPayments(firstPage, osData.payments, customFont, 1880, 45);
+	drawServices(firstPage, osData.services, customFont, 1880 + 106, 45);
+	drawPayments(firstPage, osData.payments, customFont, 1880 + 106, 45);
 
 	drawText(firstPage, osData.cpf, pdfLayout.client.cpf, customFont);
 
@@ -48,7 +48,7 @@ const osData = orderService;
 			const code = `${monthCode(dataFormatted.mm)}${osData.code}`;
 			firstPage.drawText(code, {
 					x: 1830,
-					y: 2980,
+					y: 2980 + 30,
 					size: 35,
 					font: customFont
 			});

@@ -12,7 +12,7 @@ buttonClear.addEventListener("click", () => {
   signaturePad.clear();
 });
 
-const ip = '192.168.1.218' // calama;
+const ip = '192.168.1.203' // calama;
 
 buttonSubmit.addEventListener("click", async () => {
 
@@ -38,6 +38,7 @@ buttonSubmit.addEventListener("click", async () => {
     catch(error){
       console.log(error.message)
       alert("erro ao enviar a assinatura")
+      alert(error)
   }
 });
  
