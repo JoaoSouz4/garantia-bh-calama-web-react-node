@@ -20,7 +20,7 @@ function buildOutputPath(orderService, dateFormatted) {
     os.homedir(),
     "Desktop",
     `Garantias ${year}`,
-    month
+    month,
   );
 
   if (!fs.existsSync(baseDir)) {
@@ -29,7 +29,7 @@ function buildOutputPath(orderService, dateFormatted) {
 
   const fileName = sanitizeFileName(
     `garantia ${orderService.name} ${orderService.device} ` +
-    `${dateFormatted.dd}-${dateFormatted.mm}-${dateFormatted.year}.pdf`
+      `${dateFormatted.dd}-${dateFormatted.mm}-${dateFormatted.year}.pdf`,
   );
 
   return path.join(baseDir, fileName);

@@ -1,7 +1,7 @@
-const fs = require('fs');
-const path = require('path');
-const os = require('os');
-const { PDFDocument, StandardFonts } = require('pdf-lib');
+const fs = require("fs");
+const path = require("path");
+const os = require("os");
+const { PDFDocument, StandardFonts } = require("pdf-lib");
 
 async function loadPdf(modelPath) {
   const bytes = fs.readFileSync(modelPath);

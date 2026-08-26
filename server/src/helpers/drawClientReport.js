@@ -1,27 +1,15 @@
 const { wrapText } = require("../utils/wrapText");
 
-function drawClientDeport({
-  page,
-  text,
-  font,
-  layout,
-  fontSize = 45
-}) {
+function drawClientDeport({ page, text, font, layout, fontSize = 45 }) {
   if (!text) return;
 
-  const {
-    x,
-    startY,
-    maxWidth,
-    lineHeight,
-    lineGap = 0
-  } = layout;
+  const { x, startY, maxWidth, lineHeight, lineGap = 0 } = layout;
 
   const lines = wrapText({
     text,
     font,
     fontSize,
-    maxWidth
+    maxWidth,
   });
 
   let currentY = startY;
@@ -31,7 +19,7 @@ function drawClientDeport({
       x,
       y: currentY,
       size: fontSize,
-      font
+      font,
     });
 
     currentY -= lineHeight + lineGap;

@@ -4,7 +4,7 @@ function drawPayments(page, payments, font, startY, size) {
   for (const payment of payments) {
     page.drawText(payment.mode, { x: 1550, y: startY, size, font });
 
-    if (payment.mode === 'Crédito') {
+    if (payment.mode === "Crédito") {
       page.drawText(payment.installments, { x: 1710, y: startY, size, font });
     }
 

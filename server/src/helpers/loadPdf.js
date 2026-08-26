@@ -19,7 +19,7 @@ async function loadPdf(modelPath) {
   return {
     pdfDoc,
     page,
-    font
+    font,
   };
 }
 
