@@ -10,7 +10,7 @@ export function QrCode() {
       .then((res) => setPath(res.qrCode));
   });
   return (
-    <div className="flex items-center flex-col justify-center w-75 ml-8">
+    <div className="flex items-start flex-col justify-start w-75 ml-8">
       <div className="flex flex-col items-center w-full text-gray-50 border border-gray-500 bg-gray-700 rounded-2xl gap-1 p-4">
         <div className="">
           {path ? <img src={path} className="rounded-2xl " /> : <div>...</div>}

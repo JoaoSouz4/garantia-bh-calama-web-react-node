@@ -7,7 +7,7 @@ export function ClientName(){
     const { register, formState: {errors} } = useFormContext();
 
     return (
-        <div className = 'w-[40%]'>
+        <div className = 'w-[30%]'>
             <Input.Root>
                 <Input.Label label={"Nome completo do cliente"} icon = {FaUserLarge}/>
                 <Input.Wrapper>

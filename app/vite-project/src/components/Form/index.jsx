@@ -17,14 +17,13 @@ export function Form() {
   const { onSubmit } = useWarrantySubmit();
 
   return (
-    <div className="flex flex-col h-screen py-12 min-w-[1000px]">
-      <Header />
+    <div className="flex flex-col min-w-[60%]">
 
       <form
         className=" flex flex-col flex-1 justify-between overflow-hidden"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <div className="flex-1 overflow-y-scroll bg-gray-700 p-10 px-12 shadow-md">
+        <div className="flex-1 bg-gray-700 border border-gray-500 rounded-2xl p-10 px-12 shadow-md">
           <ClientSection />
           <DeviceSection />
           <ReportsSection />
