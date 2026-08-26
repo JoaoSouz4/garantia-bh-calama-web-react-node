@@ -51,13 +51,19 @@ async function generatePdf(orderService) {
     customFont,
   );
 
+<<<<<<< HEAD
   drawServices(firstPage, osData.services, customFont, 1880, 45);
   drawPayments(firstPage, osData.payments, customFont, 1880, 45);
+=======
+	drawServices(firstPage, osData.services, customFont, 1880 + 106, 45);
+	drawPayments(firstPage, osData.payments, customFont, 1880 + 106, 45);
+>>>>>>> 30b2abbcf00b35ecf1443be7d19ff90ea5383d6c
 
   drawText(firstPage, osData.cpf, pdfLayout.client.cpf, customFont);
 
   drawText(firstPage, osData.imei, pdfLayout.client.imei, customFont);
 
+<<<<<<< HEAD
   if (osData.code) {
     const code = `${monthCode(dataFormatted.mm)}${osData.code}`;
     firstPage.drawText(code, {
@@ -67,6 +73,17 @@ async function generatePdf(orderService) {
       font: customFont,
     });
   }
+=======
+	if(osData.code){
+			const code = `${monthCode(dataFormatted.mm)}${osData.code}`;
+			firstPage.drawText(code, {
+					x: 1830,
+					y: 2980 + 30,
+					size: 35,
+					font: customFont
+			});
+	}
+>>>>>>> 30b2abbcf00b35ecf1443be7d19ff90ea5383d6c
 
   drawClientDeport({
     page: firstPage,
