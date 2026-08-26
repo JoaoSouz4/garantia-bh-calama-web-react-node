@@ -12,44 +12,41 @@ import { Header } from "./FormSections/header";
 import { useWarrantySubmit } from "../../hooks/useWarrantySubmit";
 import { Signature } from "./FormSections/signature";
 
-export function Form(){
+export function Form() {
+  const { handleSubmit } = useFormContext();
+  const { onSubmit } = useWarrantySubmit();
 
-    const { handleSubmit} = useFormContext();
-    const { onSubmit } = useWarrantySubmit();
+  return (
+    <div className="flex flex-col h-screen py-12 min-w-[1000px]">
+      <Header />
 
-    return (
+      <form
+        className=" flex flex-col flex-1 justify-between overflow-hidden"
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <div className="flex-1 overflow-y-scroll bg-gray-700 p-10 px-12 shadow-md">
+          <ClientSection />
+          <DeviceSection />
+          <ReportsSection />
 
-        <div className = 'flex flex-col h-screen py-12'>
-            <Header />
-
-            <form
-                className = ' flex flex-col flex-1 justify-between overflow-hidden'
-                onSubmit={handleSubmit(onSubmit)}
-            >
-                <div className =  'flex-1 overflow-y-scroll bg-gray-700 p-10 px-12 shadow-md'>
-
-                    <ClientSection />
-                    <DeviceSection />
-                    <ReportsSection />
-
-                    <div className = 'flex justify-between gap-5'>
-                        <div className = 'w-[60%]'>
-                            <Services />
-                            <Payment />
-                        </div>
-                        <div className = 'flex-1 border-box'>
-                            <Signature />
-                        </div>
-                    </div>
-                    <Modal />
-                </div>
-
-                <div className="w-full flex justify-end">
-                    <div className ='w-[300px]'>
-                        <Submit />
-                    </div>
-                </div>
-            </form>
+          <div className="flex justify-between gap-5">
+            <div className="w-[60%]">
+              <Services />
+              <Payment />
+            </div>
+            <div className="flex-1 border-box">
+              <Signature />
+            </div>
+          </div>
+          <Modal />
         </div>
-    );
+
+        <div className="w-full flex justify-end">
+          <div className="w-75">
+            <Submit />
+          </div>
+        </div>
+      </form>
+    </div>
+  );
 }
