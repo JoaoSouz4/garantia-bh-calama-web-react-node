@@ -12,13 +12,8 @@ buttonClear.addEventListener("click", () => {
   signaturePad.clear();
 });
 
-<<<<<<< HEAD
 const params = new URLSearchParams(window.location.search);
-
 const ip = params.get("ip");
-=======
-const ip = '192.168.1.203' // calama;
->>>>>>> 30b2abbcf00b35ecf1443be7d19ff90ea5383d6c
 
 buttonSubmit.addEventListener("click", async () => {
   try {
@@ -38,17 +33,9 @@ buttonSubmit.addEventListener("click", async () => {
     alert("Assinatura enviada com sucesso");
 
     signaturePad.clear();
-<<<<<<< HEAD
   } catch (error) {
     console.log(error.message);
     alert("erro ao enviar a assinatura");
-=======
-  }
-    catch(error){
-      console.log(error.message)
-      alert("erro ao enviar a assinatura")
-      alert(error)
->>>>>>> 30b2abbcf00b35ecf1443be7d19ff90ea5383d6c
   }
 });
 
